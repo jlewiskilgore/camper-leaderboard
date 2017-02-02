@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LeaderboardDetail from './LeaderboardDetail';
 
 class LeaderboardList extends Component {
 	constructor(props) {
@@ -9,6 +10,9 @@ class LeaderboardList extends Component {
 		return (
 			<div className="camper-leaderboard">
 			  <p>Camper Leaderboard List</p>
+			  <LeaderboardDetail />
+			  <LeaderboardDetail />
+			  <LeaderboardDetail />
 			</div>
 		);
 	}
