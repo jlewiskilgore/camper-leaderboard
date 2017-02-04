@@ -17,7 +17,10 @@ class LeaderboardList extends Component {
 			.then(function(response) {
 				console.log("RECENT");
 				console.log(response.data);
-		});
+				this.setState({
+					recentLeaders: response.data
+				});
+		}.bind(this));
 	}
 
 	getAllTimeLeaders() {
@@ -25,7 +28,10 @@ class LeaderboardList extends Component {
 			.then(function(response) {
 				console.log("ALLTIME");
 				console.log(response.data);
-		});
+				this.setState({
+					allTimeLeaders: response.data
+				});
+		}.bind(this));
 	}
 
 	componentDidMount() {
@@ -37,7 +43,6 @@ class LeaderboardList extends Component {
 		return (
 			<div className="camper-leaderboard">
 			  <p>Camper Leaderboard List</p>
-			  <p>{this.state.recentLeaders}</p>
 			  <LeaderboardDetail />
 			  <LeaderboardDetail />
 			  <LeaderboardDetail />
