@@ -41,13 +41,18 @@ class LeaderboardList extends Component {
 
 	render() {
 		return (
-			<div className="camper-leaderboard">
-			  <p>Camper Leaderboard List</p>
-			  <LeaderboardDetail />
-			  <LeaderboardDetail />
-			  <LeaderboardDetail />
-			</div>
-		);
+		  <div>
+		    {
+		      this.state.recentLeaders.map(function(leader) {
+		      	return (
+		      	  <LeaderboardDetail
+		      	    key={leader.id}
+		      	    leader={leader} />
+		      	)
+		      }.bind(this))
+		    }
+		  </div>
+		)
 	}
 }
 

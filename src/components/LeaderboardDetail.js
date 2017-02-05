@@ -7,7 +7,7 @@ class LeaderboardDetail extends Component {
 
 	render() {
 		return (
-			 <p>Camper Leaderboard Detail</p>
+			 <p>{this.props.leader.username}</p>
 		);
 	}
 }
