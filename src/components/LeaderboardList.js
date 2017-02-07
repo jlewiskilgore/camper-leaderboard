@@ -41,17 +41,25 @@ class LeaderboardList extends Component {
 
 	render() {
 		return (
-		  <div>
+		  <table>
+		  	<thead>
+		  	  <tr>
+		  	    <th>USERNAME</th>
+		  	    <th>ALLTIME POINTS</th>
+		  	    <th>RECENT POINTS</th>
+		  	  </tr>
+		  	</thead>
+		    <tbody>
 		    {
 		      this.state.recentLeaders.map(function(leader) {
 		      	return (
 		      	  <LeaderboardDetail
-		      	    key={leader.id}
 		      	    leader={leader} />
 		      	)
 		      }.bind(this))
 		    }
-		  </div>
+		    </tbody>
+		  </table>
 		)
 	}
 }

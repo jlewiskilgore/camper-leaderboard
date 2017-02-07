@@ -7,7 +7,11 @@ class LeaderboardDetail extends Component {
 
 	render() {
 		return (
-			 <p>{this.props.leader.username}</p>
+			 <tr>
+			 	<td>{this.props.leader.username}</td>
+			 	<td>{this.props.leader.alltime}</td>
+			 	<td>{this.props.leader.recent}</td>
+			 </tr>
 		);
 	}
 }
