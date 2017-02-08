@@ -11,10 +11,13 @@ class App extends Component {
 	render() {
 		return (
 		  <div>
-		    <LeaderboardList />
+		    <LeaderboardList 
+		        allTimeApiUrl="https://fcctop100.herokuapp.com/api/fccusers/top/alltime" 
+		        recentApiUrl="https://fcctop100.herokuapp.com/api/fccusers/top/recent"
+		     />
 		  </div>
 		);
 	}
 }
 
-ReactDOM.render(<App />, document.getElementById('container'));
+ReactDOM.render(<App />, document.getElementById('camper-leaderboard'));

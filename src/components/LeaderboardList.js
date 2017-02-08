@@ -6,14 +6,11 @@ class LeaderboardList extends Component {
 	constructor(props) {
 		super(props);
 
-		var recentUrl = 'https://fcctop100.herokuapp.com/api/fccusers/top/recent';
-		var allTimeUrl = 'https://fcctop100.herokuapp.com/api/fccusers/top/alltime';
-
 		this.state = { recentLeaders: [], allTimeLeaders: [] };
 	}
 
 	getRecentLeaders() {
-		axios.get('https://fcctop100.herokuapp.com/api/fccusers/top/recent')
+		axios.get(this.props.recentApiUrl)
 			.then(function(response) {
 				console.log("RECENT");
 				console.log(response.data);
@@ -24,7 +21,7 @@ class LeaderboardList extends Component {
 	}
 
 	getAllTimeLeaders() {
-		axios.get('https://fcctop100.herokuapp.com/api/fccusers/top/alltime')
+		axios.get(this.props.allTimeApiUrl)
 			.then(function(response) {
 				console.log("ALLTIME");
 				console.log(response.data);
