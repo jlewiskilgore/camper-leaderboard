@@ -6,10 +6,11 @@ class LeaderboardList extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { leaders: [], recentOrder: "Descending", allTimeOrder: "Descending" };
+		this.state = { leaders: [], recentOrder: "Descending", allTimeOrder: "Descending", leaderboardType: "Recent" };
 
 		this.sortRecentPointsColumn = this.sortRecentPointsColumn.bind(this);
 		this.sortAllTimePointsColumn = this.sortAllTimePointsColumn.bind(this);
+		this.changeLeaderboardType = this.changeLeaderboardType.bind(this);
 	}
 
 	getRecentLeaders() {
@@ -37,6 +38,21 @@ class LeaderboardList extends Component {
 	componentDidMount() {
 		this.getRecentLeaders();
 		//this.getAllTimeLeaders();
+	}
+
+	changeLeaderboardType() {
+		// If current "recent", then show "alltime"
+		if(this.state.leaderboardType == "Recent") {
+			this.getAllTimeLeaders();
+
+			this.setState({ leaderboardType: "AllTime" });
+		}
+		// Else show "recent"
+		else {
+			this.getRecentLeaders();
+
+			this.setState({ leaderboardType: "Recent" });
+		}
 	}
 
 	sortRecentPointsColumn() {
@@ -79,25 +95,28 @@ class LeaderboardList extends Component {
 
 	render() {
 		return (
-		  <table>
-		  	<thead>
-		  	  <tr>
-		  	    <th>USERNAME</th>
-		  	    <th onClick={this.sortAllTimePointsColumn}>ALLTIME POINTS</th>
-		  	    <th onClick={this.sortRecentPointsColumn}>RECENT POINTS</th>
-		  	  </tr>
-		  	</thead>
-		    <tbody>
-		    {
-		      this.state.leaders.map(function(leader) {
-		      	return (
-		      	  <LeaderboardDetail
-		      	    leader={leader} />
-		      	)
-		      }.bind(this))
-		    }
-		    </tbody>
-		  </table>
+		  <div>
+			  <button onClick={this.changeLeaderboardType}>Change</button>
+			  <table>
+			  	<thead>
+			  	  <tr>
+			  	    <th>USERNAME</th>
+			  	    <th onClick={this.sortAllTimePointsColumn}>ALLTIME POINTS</th>
+			  	    <th onClick={this.sortRecentPointsColumn}>RECENT POINTS</th>
+			  	  </tr>
+			  	</thead>
+			    <tbody>
+			    {
+			      this.state.leaders.map(function(leader) {
+			      	return (
+			      	  <LeaderboardDetail
+			      	    leader={leader} />
+			      	)
+			      }.bind(this))
+			    }
+			    </tbody>
+			  </table>
+		  </div>
 		)
 	}
 }
