@@ -7,6 +7,9 @@ class LeaderboardList extends Component {
 		super(props);
 
 		this.state = { recentLeaders: [], allTimeLeaders: [] };
+
+		this.sortRecentPointsColumn = this.sortRecentPointsColumn.bind(this);
+		this.sortAllTimePointsColumn = this.sortAllTimePointsColumn.bind(this);
 	}
 
 	getRecentLeaders() {
@@ -36,14 +39,22 @@ class LeaderboardList extends Component {
 		this.getAllTimeLeaders();
 	}
 
+	sortRecentPointsColumn() {
+		console.log("sort recent points");
+	}
+
+	sortAllTimePointsColumn() {
+		console.log("sort all time points");
+	}
+
 	render() {
 		return (
 		  <table>
 		  	<thead>
 		  	  <tr>
 		  	    <th>USERNAME</th>
-		  	    <th>ALLTIME POINTS</th>
-		  	    <th>RECENT POINTS</th>
+		  	    <th onClick={this.sortAllTimePointsColumn}>ALLTIME POINTS</th>
+		  	    <th onClick={this.sortRecentPointsColumn}>RECENT POINTS</th>
 		  	  </tr>
 		  	</thead>
 		    <tbody>
