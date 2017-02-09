@@ -6,7 +6,7 @@ class LeaderboardList extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { recentLeaders: [], allTimeLeaders: [], recentOrder: "Descending", allTimeOrder: "Descending" };
+		this.state = { leaders: [], recentOrder: "Descending", allTimeOrder: "Descending" };
 
 		this.sortRecentPointsColumn = this.sortRecentPointsColumn.bind(this);
 		this.sortAllTimePointsColumn = this.sortAllTimePointsColumn.bind(this);
@@ -18,7 +18,7 @@ class LeaderboardList extends Component {
 				console.log("RECENT");
 				console.log(response.data);
 				this.setState({
-					recentLeaders: response.data
+					leaders: response.data
 				});
 		}.bind(this));
 	}
@@ -29,14 +29,14 @@ class LeaderboardList extends Component {
 				console.log("ALLTIME");
 				console.log(response.data);
 				this.setState({
-					allTimeLeaders: response.data
+					leaders: response.data
 				});
 		}.bind(this));
 	}
 
 	componentDidMount() {
 		this.getRecentLeaders();
-		this.getAllTimeLeaders();
+		//this.getAllTimeLeaders();
 	}
 
 	sortRecentPointsColumn() {
@@ -44,14 +44,14 @@ class LeaderboardList extends Component {
 		// Check current state then toggle to other
 		if(this.state.recentOrder == "Ascending") {
 			// Sort by descending then change state
-			this.state.recentLeaders.sort(function(a,b) {
+			this.state.leaders.sort(function(a,b) {
 				return b.recent - a.recent;
 			})
 			this.setState({ recentOrder: "Descending" });
 		}
 		else if(this.state.recentOrder == "Descending") {
 			// Sort by ascending then change state
-			this.state.recentLeaders.sort(function(a,b) {
+			this.state.leaders.sort(function(a,b) {
 				return a.recent - b.recent;
 			})
 			this.setState({ recentOrder: "Ascending" });
@@ -63,14 +63,14 @@ class LeaderboardList extends Component {
 		// Check current state then toggle to other
 		if(this.state.allTimeOrder == "Ascending") {
 			// Sort by descending then change state
-			this.state.recentLeaders.sort(function(a,b) {
+			this.state.leaders.sort(function(a,b) {
 				return b.alltime - a.alltime;
 			})
 			this.setState({ allTimeOrder: "Descending" });
 		}
 		else if(this.state.allTimeOrder == "Descending") {
 			// Sort by ascending then change state
-			this.state.recentLeaders.sort(function(a,b) {
+			this.state.leaders.sort(function(a,b) {
 				return a.alltime - b.alltime;
 			})
 			this.setState({ allTimeOrder: "Ascending" });
@@ -89,7 +89,7 @@ class LeaderboardList extends Component {
 		  	</thead>
 		    <tbody>
 		    {
-		      this.state.recentLeaders.map(function(leader) {
+		      this.state.leaders.map(function(leader) {
 		      	return (
 		      	  <LeaderboardDetail
 		      	    leader={leader} />
