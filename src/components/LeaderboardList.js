@@ -6,7 +6,7 @@ class LeaderboardList extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { leaders: [], recentOrder: "Descending", allTimeOrder: "Descending", leaderboardType: "Recent" };
+		this.state = { leaders: [], recentOrder: "Descending", allTimeOrder: "Descending", leaderboardType: "Recent Leaders" };
 
 		this.sortRecentPointsColumn = this.sortRecentPointsColumn.bind(this);
 		this.sortAllTimePointsColumn = this.sortAllTimePointsColumn.bind(this);
@@ -42,16 +42,16 @@ class LeaderboardList extends Component {
 
 	changeLeaderboardType() {
 		// If current "recent", then show "alltime"
-		if(this.state.leaderboardType == "Recent") {
+		if(this.state.leaderboardType == "Recent Leaders") {
 			this.getAllTimeLeaders();
 
-			this.setState({ leaderboardType: "AllTime" });
+			this.setState({ leaderboardType: "All Time Leaders" });
 		}
 		// Else show "recent"
 		else {
 			this.getRecentLeaders();
 
-			this.setState({ leaderboardType: "Recent" });
+			this.setState({ leaderboardType: "Recent Leaders" });
 		}
 	}
 
@@ -96,7 +96,8 @@ class LeaderboardList extends Component {
 	render() {
 		return (
 		  <div>
-			  <button onClick={this.changeLeaderboardType}>Change</button>
+		  	  <h2>{this.state.leaderboardType}</h2>
+			  <button onClick={this.changeLeaderboardType}>Change Leaderboard Type</button>
 			  <table>
 			  	<thead>
 			  	  <tr>
