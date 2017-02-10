@@ -98,24 +98,24 @@ class LeaderboardList extends Component {
 		  <div>
 		  	  <h2>{this.state.leaderboardType}</h2>
 			  <button onClick={this.changeLeaderboardType}>Change Leaderboard Type</button>
-			  <table>
-			  	<thead>
-			  	  <tr>
-			  	    <th>USERNAME</th>
-			  	    <th onClick={this.sortAllTimePointsColumn}>ALLTIME POINTS</th>
-			  	    <th onClick={this.sortRecentPointsColumn}>RECENT POINTS</th>
-			  	  </tr>
-			  	</thead>
-			    <tbody>
-			    {
-			      this.state.leaders.map(function(leader) {
-			      	return (
-			      	  <LeaderboardDetail
-			      	    leader={leader} />
-			      	)
-			      }.bind(this))
-			    }
-			    </tbody>
+			  <table class="table table-bordered">
+			      <thead>
+			  	<tr>
+			  	  <th>USERNAME</th>
+			  	  <th onClick={this.sortAllTimePointsColumn}>ALLTIME POINTS</th>
+			  	  <th onClick={this.sortRecentPointsColumn}>RECENT POINTS</th>
+			  	</tr>
+			      </thead>
+			      <tbody>
+			      {
+			        this.state.leaders.map(function(leader) {
+			      	  return (
+			      	    <LeaderboardDetail
+			      	      leader={leader} />
+			      	  )
+			        }.bind(this))
+			      }
+			      </tbody>
 			  </table>
 		  </div>
 		)
