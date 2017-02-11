@@ -16,8 +16,6 @@ class LeaderboardList extends Component {
 	getRecentLeaders() {
 		axios.get(this.props.recentApiUrl)
 			.then(function(response) {
-				console.log("RECENT");
-				console.log(response.data);
 				this.setState({
 					leaders: response.data
 				});
@@ -27,8 +25,6 @@ class LeaderboardList extends Component {
 	getAllTimeLeaders() {
 		axios.get(this.props.allTimeApiUrl)
 			.then(function(response) {
-				console.log("ALLTIME");
-				console.log(response.data);
 				this.setState({
 					leaders: response.data
 				});
@@ -37,7 +33,6 @@ class LeaderboardList extends Component {
 
 	componentDidMount() {
 		this.getRecentLeaders();
-		//this.getAllTimeLeaders();
 	}
 
 	changeLeaderboardType() {
@@ -56,7 +51,6 @@ class LeaderboardList extends Component {
 	}
 
 	sortRecentPointsColumn() {
-		console.log("sort recent points");
 		// Check current state then toggle to other
 		if(this.state.recentOrder == "Ascending") {
 			// Sort by descending then change state
@@ -75,7 +69,6 @@ class LeaderboardList extends Component {
 	}
 
 	sortAllTimePointsColumn() {
-		console.log("sort all time points");
 		// Check current state then toggle to other
 		if(this.state.allTimeOrder == "Ascending") {
 			// Sort by descending then change state
