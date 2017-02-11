@@ -98,7 +98,7 @@ class LeaderboardList extends Component {
 		  <div>
 		  	  <h2>{this.state.leaderboardType}</h2>
 			  <button onClick={this.changeLeaderboardType}>Change Leaderboard Type</button>
-			  <table class="table table-bordered">
+			  <table className="table table-bordered">
 			      <thead>
 			  	<tr>
 			  	  <th>USERNAME</th>
